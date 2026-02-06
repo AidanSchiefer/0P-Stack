@@ -39,20 +39,18 @@ class stack {
     bool is_empty();
 
     stack(){ 
+      // Set the total elements to zero
       _elements = 0;
-      /*
-      for (int i = 0; i < sizeof(_data); i++){
-        _data[i] = arr[i];
-        if (!_data[i].empty()){
-          _elements += 1;
-        }
-      } 
-        */
+      // Initialize initial dynamic array size to 1
+      _data = new std::string[1];
+      // Set the total capacity to the capacity of the current dynamic array (1)
+      _capacity = 1;
     }
 
   private:
-	std::string _data[4];
-  int _elements;
+	  std::string* _data;
+    int _elements;
+    int _capacity;
 };
 
 #endif
