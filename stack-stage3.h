@@ -46,11 +46,56 @@ template <typename T>
       _capacity = 1;
     }
 
+    ~stack();
+    stack(const stack&);
+    stack& operator=(const stack&);
+
   private:
 	T* _data;
     int _elements;
     int _capacity;
 };
+
+// Destructor
+template <typename T> 
+stack<T>::~stack(){
+    // Delete dynamically allocated memory
+    delete[] _data;
+}
+
+// Copy constructor
+template <typename T>
+stack<T>::stack(const stack& other){
+    // Copy variables from the other stack object
+    _elements = other._elements;
+    _capacity = other._capacity;
+    _data = new T[_capacity];
+    // Iterate through and copy array elements into _data
+    for (int i = 0; i < _elements; i++){
+        _data[i] = other._data[i];
+    }
+}
+
+// Assignment operator
+template <typename T>
+stack<T>& stack<T>::operator=(const stack& other){
+    // If current object doesn't equal the other object, do the assignment
+    if (this != &other){
+        // Deallocate current data
+        delete[] _data;
+
+        // Copy variables from the other stack object
+        _elements = other._elements;
+        _capacity = other._capacity;
+        _data = new T[_capacity];
+        // Iterate through and copy array elements into _data
+        for (int i = 0; i < _elements; i++){
+            _data[i] = other._data[i];
+        }
+    }
+    // Otherwise, return this (Happens regardless. Skips to this if copying the same object)
+    return *this;
+}
 
 template <typename T>
 T stack<T>::top() {
