@@ -55,12 +55,15 @@ template <typename T>
 template <typename T>
 T stack<T>::top() {
     // Return the top element in the stack
+    /*
     if (_elements == 0){
         return "";
     }
     else{
         return _data[_elements-1];
     }
+    */
+    return _data[_elements-1];
 }
 
 template <typename T>
@@ -81,7 +84,7 @@ void stack<T>::push(const T & newValue){
         */
     // Dynamic push implementation
     if (_elements == _capacity){
-         std::string* newData = new std::string[_capacity * 2]; // Create a new array of capacity (2 * current capacity)
+        T* newData = new T[_capacity * 2]; // Create a new array of capacity (2 * current capacity)
         // Copy contents of old array into the new array
         for (int i = 0; i < _capacity; i++){
             newData[i] = _data[i];
@@ -104,7 +107,7 @@ void stack<T>::pop(){
     //Remove the value at the top of the stack, decrease the number of elements by one
     if (_elements > 0){
         _elements--;
-        _data[_elements] = "";
+        _data[_elements] = T();
     }  
 }
 
