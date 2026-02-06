@@ -19,6 +19,7 @@
 #define _STACK_H
 
 #include <cstddef> // for size_t
+#include <iostream>
 #include <string>  // for stage 1
 
 /***

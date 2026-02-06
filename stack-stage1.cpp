@@ -12,12 +12,18 @@ using namespace std;
 
 string stack::top() {
     // Return the top element in the stack
-    return _data[_elements-1];
+    if (_elements == 0){
+        return "";
+    }
+    else{
+        return _data[_elements-1];
+    }
 }
 
 void stack::push(const std::string & newValue){
     // Loop through the array (stack)
-    for (int i = 0; i < sizeof(_data); i++){
+    size_t size = sizeof(_data) / sizeof(_data[0]);
+    for (int i = 0; i < size; i++){
         // If the array (stack) gets to the next empty index, add the new value, then return
         if (_data[i].empty()){
             _data[i] = newValue; // Put new value into the array
@@ -29,9 +35,10 @@ void stack::push(const std::string & newValue){
 
 void stack::pop(){ 
     //Remove the value at the top of the stack, decrease the number of elements by one
-    _data[_elements] = "";
-    _elements -= 1;
-    return; 
+    if (_elements > 0){
+        _elements--;
+        _data[_elements] = "";
+    }  
 }
 
 size_t stack::size(){ 
@@ -41,9 +48,9 @@ size_t stack::size(){
 
 bool stack::is_empty(){
     // Check if the array is empty, if it is empty, return true, otherwise, return false
-    if (_data[0].empty()){
+    if (_elements == 0){
         return true;
-    } 
+    }
     else{
         return false;
     }
