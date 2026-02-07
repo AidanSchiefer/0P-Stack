@@ -18,6 +18,9 @@
 #ifndef _STACK_H
 #define _STACK_H
 
+#include <cstddef> // for size_t
+#include <iostream>
+#include <string>  // for stage 1
 // To start stage 2, you probably want to copy all of your code from
 // stack-stage1.h and stack-stage1.cpp in place of this comment.
 
